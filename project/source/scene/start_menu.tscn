@@ -5,7 +5,8 @@
 [ext_resource path="res://resource/graphics/font/kenney_pixel_128.tres" type="DynamicFont" id=3]
 
 [sub_resource type="GDScript" id=1]
-script/source = "extends Node2D
+script/source = "
+extends Node2D
 
 func _ready():
 	$MovingGUI/Icon/AnimationPlayer.play('init')
