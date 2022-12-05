@@ -1,6 +1,5 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://source/object/blockboard_button.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resource/graphics/tile/0.png" type="Texture" id=2]
 [ext_resource path="res://resource/graphics/icon/soil_x16.png" type="Texture" id=3]
 [ext_resource path="res://resource/graphics/font/kenney_pixel_32.tres" type="DynamicFont" id=4]
@@ -27,25 +26,58 @@ func _process(delta):
 script/source = "
 extends Control
 
-var blockboard_button_list = [
-	'BlockboardButton',
-	'BlockboardButton2'
-]
+const blockboard_button = preload('res://source/object/blockboard_button.tscn')
+
+var blockboard_button_data = {
+	0:{
+		'name':'0',
+		'id':1,
+		'money':10,
+		'soil':10,
+		'wood':0,
+		'stone':0,
+		'brick':0,
+		'steel':0,
+		'glass':0,
+	},
+	1:{
+		'name':'1',
+		'id':2,
+		'money':25,
+		'soil':5,
+		'wood':10,
+		'stone':10,
+		'brick':0,
+		'steel':0,
+		'glass':0,
+	},
+}
 
 func _ready():
-	pass
+	for button in blockboard_button_data:
+		var blockboard_button_instance = blockboard_button.instance()
+		blockboard_button_instance.name = blockboard_button_data[button]['name']
+		blockboard_button_instance.id = blockboard_button_data[button]['id']
+		blockboard_button_instance.money = blockboard_button_data[button]['money']
+		blockboard_button_instance.soil = blockboard_button_data[button]['soil']
+		blockboard_button_instance.wood = blockboard_button_data[button]['wood']
+		blockboard_button_instance.stone = blockboard_button_data[button]['stone']
+		blockboard_button_instance.brick = blockboard_button_data[button]['brick']
+		blockboard_button_instance.steel = blockboard_button_data[button]['steel']
+		blockboard_button_instance.glass = blockboard_button_data[button]['glass']
+		$Group/HBoxContainer.add_child(blockboard_button_instance)
+		
 
 func _process(delta):
-	for blockboard_button in blockboard_button_list:
-		print(blockboard_button)
-		if get_node('Group/HBoxContainer/'+blockboard_button+'/Button').info_popup == true:
-			$Price/HBoxContainer/Money/Price.text = str(get_node('Group/HBoxContainer/'+blockboard_button).money)
-			$Price/HBoxContainer/Soil/Price.text = str(get_node('Group/HBoxContainer/'+blockboard_button).soil)
-			$Price/HBoxContainer/Wood/Price.text = str(get_node('Group/HBoxContainer/'+blockboard_button).wood)
-			$Price/HBoxContainer/Stone/Price.text = str(get_node('Group/HBoxContainer/'+blockboard_button).stone)
-			$Price/HBoxContainer/Brick/Price.text = str(get_node('Group/HBoxContainer/'+blockboard_button).brick)
-			$Price/HBoxContainer/Steel/Price.text = str(get_node('Group/HBoxContainer/'+blockboard_button).steel)
-			$Price/HBoxContainer/Glass/Price.text = str(get_node('Group/HBoxContainer/'+blockboard_button).glass)
+	for button in blockboard_button_data:
+		if get_node('Group/HBoxContainer/'+blockboard_button_data[button]['name']+'/Button').info_popup == true:
+			$Price/HBoxContainer/Money/Price.text = str(get_node('Group/HBoxContainer/'+blockboard_button_data[button]['name']).money)
+			$Price/HBoxContainer/Soil/Price.text = str(get_node('Group/HBoxContainer/'+blockboard_button_data[button]['name']).soil)
+			$Price/HBoxContainer/Wood/Price.text = str(get_node('Group/HBoxContainer/'+blockboard_button_data[button]['name']).wood)
+			$Price/HBoxContainer/Stone/Price.text = str(get_node('Group/HBoxContainer/'+blockboard_button_data[button]['name']).stone)
+			$Price/HBoxContainer/Brick/Price.text = str(get_node('Group/HBoxContainer/'+blockboard_button_data[button]['name']).brick)
+			$Price/HBoxContainer/Steel/Price.text = str(get_node('Group/HBoxContainer/'+blockboard_button_data[button]['name']).steel)
+			$Price/HBoxContainer/Glass/Price.text = str(get_node('Group/HBoxContainer/'+blockboard_button_data[button]['name']).glass)
 			break
 			
 		else:
@@ -286,28 +318,7 @@ rect_scale = Vector2( 4.6, 4.6 )
 script = SubResource( 4 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Group/Group"]
-margin_right = 32.0
 custom_constants/separation = 32
-
-[node name="BlockboardButton" parent="Group/Group/HBoxContainer" instance=ExtResource( 1 )]
-unique_name_in_owner = true
-anchor_right = 0.0
-anchor_bottom = 0.0
-id = 1
-money = 10
-soil = 10
-
-[node name="BlockboardButton2" parent="Group/Group/HBoxContainer" instance=ExtResource( 1 )]
-unique_name_in_owner = true
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 32.0
-margin_right = 32.0
-id = 2
-money = 25
-soil = 5
-wood = 10
-stone = 10
 
 [node name="Button" type="Button" parent="."]
 margin_left = -64.0

@@ -32,12 +32,15 @@ script/source = "
 extends Button
 
 var info_popup = false
+var button_click = false
 
 func _process(delta):
 	if is_hovered() == false:
 		info_popup = false
 	else:
 		info_popup = true
+		if is_pressed():
+			button_click = true
 "
 
 [node name="BlockboardButton" type="Control"]
