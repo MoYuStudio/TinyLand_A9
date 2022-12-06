@@ -16,9 +16,11 @@ extends Control
 
 const button_original = preload('res://source/object/blockboard_button.tscn')
 
+var button_icon = 'res://resource/graphics/tile/0.png'
 var button_data = {}
 
 func _ready():
+	$Button.icon = load(str(button_icon))
 	for button in button_data:
 		var button_instance = button_original.instance()
 		button_instance.name = button_data[button]['name']

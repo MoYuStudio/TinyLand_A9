@@ -8,6 +8,7 @@ const class_original = preload('res://source/object/blockboard_class.tscn')
 var class_data = {
 	0:{
 		'name':'Ground',
+		'button_icon':'res://resource/graphics/tile/0.png',
 		'button_data':{
 			0:{
 				'name':'0',
@@ -35,6 +36,7 @@ var class_data = {
 	},
 	1:{
 		'name':'Farming',
+		'button_icon':'res://resource/graphics/tile/1.png',
 		'button_data':{
 			0:{
 				'name':'0',
@@ -51,6 +53,7 @@ var class_data = {
 	},
 	2:{
 		'name':'Industrial',
+		'button_icon':'res://resource/graphics/tile/2.png',
 		'button_data':{
 			0:{
 				'name':'0',
@@ -67,6 +70,7 @@ var class_data = {
 	},
 	3:{
 		'name':'Finance',
+		'button_icon':'res://resource/graphics/tile/3.png',
 		'button_data':{
 			0:{
 				'name':'0',
@@ -83,6 +87,7 @@ var class_data = {
 	},
 	4:{
 		'name':'Infrastructure',
+		'button_icon':'res://resource/graphics/tile/4.tres',
 		'button_data':{
 			0:{
 				'name':'0',
@@ -99,6 +104,7 @@ var class_data = {
 	},
 	5:{
 		'name':'Other',
+		'button_icon':'res://resource/graphics/tile/5.png',
 		'button_data':{
 			0:{
 				'name':'0',
@@ -119,6 +125,7 @@ func _ready():
 	for class_is in class_data:
 		var class_instance = class_original.instance()
 		class_instance.name = class_data[class_is]['name']
+		class_instance.button_icon = class_data[class_is]['button_icon']
 		class_instance.button_data = class_data[class_is]['button_data']
 		class_instance.rect_position.x = 1920/4 + 256*class_is
 		class_instance.rect_position.y = 1080-151
