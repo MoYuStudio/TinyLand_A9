@@ -142,13 +142,13 @@ script = SubResource( 6 )
 margin_top = -52.0
 margin_right = 1920.0
 margin_bottom = -4.0
-color = Color( 1, 1, 1, 0.282353 )
+color = Color( 0, 0, 0, 0.282353 )
 script = SubResource( 5 )
 
 [node name="GroupBackground" type="ColorRect" parent="Group"]
 margin_right = 1920.0
 margin_bottom = 128.0
-color = Color( 1, 1, 1, 0.392157 )
+color = Color( 0, 0, 0, 0.392157 )
 script = SubResource( 3 )
 
 [node name="Price" type="ScrollContainer" parent="Group"]

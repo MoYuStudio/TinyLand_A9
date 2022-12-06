@@ -1,3 +1,55 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://resource/bit_resource/tileset/tilemap.tres" type="TileSet" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "
+extends TileMap
+
+var land_map = []
+
+func _ready():
+	var land_noise = OpenSimplexNoise.new()
+	var forest_noise = OpenSimplexNoise.new()
+	
+	randomize()
+
+	land_noise.seed = 0
+	land_noise.octaves = 3 # 4
+	land_noise.period = 25 # 20.0
+	land_noise.persistence = 0.8
+	
+	var tilemap_board = 128
+	var tilemap_offset = 60 # 256 is 40
+	
+	for x in range(tilemap_board):
+		for y in range(tilemap_board*2):
+			
+			var the_land_noise = land_noise.get_noise_2d(x,y)*100+10
+			
+			if the_land_noise <= 0:
+				set_cell(x-tilemap_board/2+tilemap_offset, y-tilemap_board/2+tilemap_offset, 4)
+			elif the_land_noise <= 7:
+				set_cell(x-tilemap_board/2+tilemap_offset, y-tilemap_board/2+tilemap_offset, 2)
+			elif the_land_noise <= 43:
+				set_cell(x-tilemap_board/2+tilemap_offset, y-tilemap_board/2+tilemap_offset, 0)
+			elif the_land_noise <= 50:
+				set_cell(x-tilemap_board/2+tilemap_offset, y-tilemap_board/2+tilemap_offset, 1)
+			elif the_land_noise <= 100:
+				set_cell(x-tilemap_board/2+tilemap_offset, y-tilemap_board/2+tilemap_offset, 3)
+
+func _process(delta):
+	pass
+
+"
 
 [node name="Tilemap" type="Node2D"]
+
+[node name="Land" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 4 )
+cell_custom_transform = Transform2D( 64, 0, 0, 32, 0, 0 )
+cell_half_offset = 0
+cell_y_sort = true
+format = 1
+script = SubResource( 1 )
