@@ -127,10 +127,8 @@ func _pressed():
 "
 
 [node name="BlockboardClass" type="Control"]
-margin_left = 960.0
-margin_top = 300.0
-margin_right = 1021.0
-margin_bottom = 357.0
+margin_right = 61.0
+margin_bottom = 57.0
 script = SubResource( 2 )
 
 [node name="Group" type="Control" parent="."]
