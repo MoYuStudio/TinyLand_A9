@@ -9,6 +9,7 @@
 [node name="Tilemap" parent="." instance=ExtResource( 2 )]
 
 [node name="Camera" parent="." instance=ExtResource( 3 )]
+current = true
 
 [node name="GUI" type="CanvasLayer" parent="."]
 

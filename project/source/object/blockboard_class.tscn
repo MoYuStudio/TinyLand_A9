@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://resource/graphics/tile/0.png" type="Texture" id=2]
 [ext_resource path="res://resource/graphics/icon/soil_x16.png" type="Texture" id=3]
@@ -101,6 +101,8 @@ func _ready():
 	get_h_scrollbar().modulate = Color(0, 0, 0, 0)
 	get_h_scrollbar().rect_scale.y = 0
 "
+
+[sub_resource type="StyleBoxEmpty" id=7]
 
 [sub_resource type="GDScript" id=1]
 script/source = "
@@ -307,6 +309,7 @@ margin_top = 32.0
 margin_right = 64.0
 margin_bottom = 160.0
 custom_fonts/font = ExtResource( 4 )
+custom_styles/focus = SubResource( 7 )
 text = "Block"
 icon = ExtResource( 2 )
 flat = true
