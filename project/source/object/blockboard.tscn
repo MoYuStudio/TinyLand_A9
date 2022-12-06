@@ -5,6 +5,9 @@ script/source = "extends Node2D
 
 const class_original = preload('res://source/object/blockboard_class.tscn')
 
+var group_list = []
+var the_group
+
 var class_data = {
 	0:{
 		'name':'Ground',
@@ -127,12 +130,26 @@ func _ready():
 		class_instance.name = class_data[class_is]['name']
 		class_instance.button_icon = class_data[class_is]['button_icon']
 		class_instance.button_data = class_data[class_is]['button_data']
-		class_instance.rect_position.x = 1920/4 + 256*class_is
+		class_instance.rect_position.x = 1920/6 + 256*class_is
 		class_instance.rect_position.y = 1080-151
+		# class_instance.Group.rect_position.x = - 256*class_is
 		self.add_child(class_instance)
-
+		group_list.append(class_data[class_is]['name'])
+	for group_id in len(group_list):
+		get_node(group_list[group_id]+'/Group').rect_position.x = -1920/6 - 256*group_id
+		get_node(group_list[group_id]+'/Button').text = str(group_list[group_id])
+		
 func _process(delta):
-	pass
+	for group in group_list:
+		if group != the_group:
+			if get_node(group+'/Button').group_visible == true:
+				the_group = group
+				var group_list_coby = group_list
+				group_list_coby.erase(group)
+				for group_copy in group_list_coby:
+					get_node(group_copy+'/Button').group_visible = false
+					get_node(group_copy+'/Group').visible = false
+				group_list.append(the_group)
 "
 
 [node name="Blockboard" type="Node2D"]
