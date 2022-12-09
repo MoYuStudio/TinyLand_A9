@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://resource/bit_resource/tileset/tilemap.tres" type="TileSet" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "
+extends TileMap
+
+var board = 128
+var offset = 60 # 256 is 40
+
+var noise
+var noise_seed = 0
+var octaves = 3 # 4
+var period = 25 # 20.0
+var persistence = 0.8
+
+var land_map = []
+
+var tile_data = {}
+
+func _ready():
+	noise = OpenSimplexNoise.new()
+	randomize()
+	noise.seed = noise_seed
+	noise.octaves = octaves
+	noise.period = period
+	noise.persistence = persistence
+	
+	for x in range(board):
+		for y in range(board*2):
+			var the_land_noise = noise.get_noise_2d(x,y)*100+10
+			for tile in tile_data:
+				if the_land_noise <= tile_data[tile]['noise_level']:
+					set_cell(x-board/2+offset, y-board/2+offset, tile_data[tile]['tile_id'])
+					break
+
+func _process(delta):
+	pass
+"
+
+[node name="TileMap" type="TileMap"]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 4 )
+cell_custom_transform = Transform2D( 64, 0, 0, 32, 0, 0 )
+cell_half_offset = 0
+cell_y_sort = true
+format = 1
+script = SubResource( 1 )

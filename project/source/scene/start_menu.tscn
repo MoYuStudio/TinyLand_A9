@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://resource/graphics/font/kenney_pixel_64.tres" type="DynamicFont" id=1]
 [ext_resource path="res://resource/graphics/logo/icon.png" type="Texture" id=2]
@@ -18,6 +18,8 @@ func _physics_process(delta):
 	$MovingGUI.position.x = - mouse_pos.x/9 + window_size.x/9
 	$MovingGUI.position.y = - mouse_pos.y/9 + window_size.y/9
 "
+
+[sub_resource type="StyleBoxEmpty" id=4]
 
 [sub_resource type="GDScript" id=3]
 script/source = "extends Button
@@ -63,6 +65,7 @@ margin_top = 282.0
 margin_right = 753.0
 margin_bottom = 375.0
 custom_fonts/font = ExtResource( 3 )
+custom_styles/focus = SubResource( 4 )
 text = "NEW"
 flat = true
 script = SubResource( 3 )
