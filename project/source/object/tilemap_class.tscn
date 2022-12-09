@@ -37,6 +37,10 @@ func _ready():
 
 func _process(delta):
 	pass
+	
+func mouse_pos_transition(mouse_pos):
+	
+	return Vector2(world_to_map(mouse_pos)[0],world_to_map(mouse_pos)[1])
 "
 
 [node name="TileMap" type="TileMap"]
