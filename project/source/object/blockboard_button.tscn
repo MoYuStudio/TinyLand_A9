@@ -18,13 +18,11 @@ export var glass = 0
 
 var scale_zoom = 4.6
 var bar_y = 600
+var button_be_pressed = false
 
 func _ready():
 	var block_icon = load('res://resource/graphics/tile/'+ str(id) +'.png')
 	$Button.icon = block_icon
-
-func _process(delta):
-	pass
 "
 
 [sub_resource type="StyleBoxEmpty" id=3]
@@ -45,6 +43,8 @@ func _process(delta):
 		info_popup = true
 		if is_pressed():
 			button_click = true
+		else:
+			button_click = false
 
 func _physics_process(delta):
 	if is_hovered():
