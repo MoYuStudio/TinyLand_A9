@@ -1,0 +1,148 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://resource/graphics/icon/money_x16.png" type="Texture" id=1]
+[ext_resource path="res://resource/graphics/icon/brick_x16.png" type="Texture" id=2]
+[ext_resource path="res://resource/graphics/icon/soil_x16.png" type="Texture" id=3]
+[ext_resource path="res://resource/graphics/icon/glass_x16.png" type="Texture" id=4]
+[ext_resource path="res://resource/graphics/icon/wood_x16.png" type="Texture" id=5]
+[ext_resource path="res://resource/graphics/icon/stone_x16.png" type="Texture" id=6]
+[ext_resource path="res://resource/graphics/icon/steel_x16.png" type="Texture" id=7]
+[ext_resource path="res://resource/graphics/font/kenney_pixel_32.tres" type="DynamicFont" id=8]
+
+[node name="ResourceDisplay" type="ScrollContainer"]
+margin_right = 960.0
+margin_bottom = 24.0
+rect_scale = Vector2( 2, 2 )
+
+[node name="BoxContainer" type="HBoxContainer" parent="."]
+margin_right = 750.0
+custom_constants/separation = 125
+alignment = 1
+
+[node name="Money" type="Control" parent="BoxContainer"]
+
+[node name="Icon" type="Sprite" parent="BoxContainer/Money"]
+position = Vector2( 0, 3 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Price" type="Label" parent="BoxContainer/Money"]
+margin_left = 32.0
+margin_right = 44.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 248, -82 )
+custom_fonts/font = ExtResource( 8 )
+text = "0"
+
+[node name="Soil" type="Control" parent="BoxContainer"]
+margin_left = 125.0
+margin_right = 125.0
+
+[node name="Icon" type="Sprite" parent="BoxContainer/Soil"]
+position = Vector2( 0, 3 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Price" type="Label" parent="BoxContainer/Soil"]
+margin_left = 32.0
+margin_right = 44.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 248, -82 )
+custom_fonts/font = ExtResource( 8 )
+text = "0"
+
+[node name="Wood" type="Control" parent="BoxContainer"]
+margin_left = 250.0
+margin_right = 250.0
+
+[node name="Icon" type="Sprite" parent="BoxContainer/Wood"]
+position = Vector2( 0, 3 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="Price" type="Label" parent="BoxContainer/Wood"]
+margin_left = 32.0
+margin_right = 44.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 248, -82 )
+custom_fonts/font = ExtResource( 8 )
+text = "0"
+
+[node name="Stone" type="Control" parent="BoxContainer"]
+margin_left = 375.0
+margin_right = 375.0
+rect_pivot_offset = Vector2( -435, -45 )
+
+[node name="Icon" type="Sprite" parent="BoxContainer/Stone"]
+position = Vector2( 0, 3 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 6 )
+centered = false
+
+[node name="Price" type="Label" parent="BoxContainer/Stone"]
+margin_left = 32.0
+margin_right = 44.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 248, -82 )
+custom_fonts/font = ExtResource( 8 )
+text = "0"
+
+[node name="Brick" type="Control" parent="BoxContainer"]
+margin_left = 500.0
+margin_right = 500.0
+rect_pivot_offset = Vector2( -435, -45 )
+
+[node name="Icon" type="Sprite" parent="BoxContainer/Brick"]
+position = Vector2( 0, 3 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Price" type="Label" parent="BoxContainer/Brick"]
+margin_left = 32.0
+margin_right = 44.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 248, -82 )
+custom_fonts/font = ExtResource( 8 )
+text = "0"
+
+[node name="Steel" type="Control" parent="BoxContainer"]
+margin_left = 625.0
+margin_right = 625.0
+rect_pivot_offset = Vector2( -435, -45 )
+
+[node name="Icon" type="Sprite" parent="BoxContainer/Steel"]
+position = Vector2( 0, 3 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="Price" type="Label" parent="BoxContainer/Steel"]
+margin_left = 32.0
+margin_right = 44.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 248, -82 )
+custom_fonts/font = ExtResource( 8 )
+text = "0"
+
+[node name="Glass" type="Control" parent="BoxContainer"]
+margin_left = 750.0
+margin_right = 750.0
+rect_pivot_offset = Vector2( -435, -45 )
+
+[node name="Icon" type="Sprite" parent="BoxContainer/Glass"]
+position = Vector2( 0, 3 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="Price" type="Label" parent="BoxContainer/Glass"]
+margin_left = 32.0
+margin_right = 44.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 248, -82 )
+custom_fonts/font = ExtResource( 8 )
+text = "0"
