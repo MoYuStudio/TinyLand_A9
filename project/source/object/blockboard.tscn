@@ -15,7 +15,7 @@ var class_data = {
 		'button_icon':'res://resource/graphics/tile/0.png',
 		'button_data':{
 			0:{
-				'name':'0',#Soil
+				'name':'Soil',
 				'id':1,
 				'money':100,
 				'soil':10,
@@ -193,6 +193,8 @@ var class_data = {
 
 var block_be_choose = -1
 
+var blockboard_click_lock = false
+
 func _ready():
 	for class_is in class_data:
 		var class_instance = class_original.instance()
@@ -223,8 +225,46 @@ func _process(delta):
 					get_node(group_copy+'/Button').group_visible = false
 					get_node(group_copy+'/Group').visible = false
 				group_list.append(the_group)
-		if get_node(group+'/Group/Group/HBoxContainer/'+str('0')+'/Button').button_click:
-			block_be_choose = get_node(group+'/Group/Group/HBoxContainer/'+str('0')).id
+	
+	for class_is in class_data:
+		#print(class_data[class_is]['name'])
+		for data_id in class_data[class_is]['button_data']:
+			var blockboard_id = class_data[class_is]['name'] + \\
+								'/Group/Group/HBoxContainer/' + \\
+								class_data[class_is]['button_data'][data_id]['name']
+			if get_node(blockboard_id+'/Button').button_click:
+				block_be_choose = get_node(blockboard_id).id
+	
+	for class_is in class_data:
+		#print(class_data[class_is]['name'])
+		if get_node(class_data[class_is]['name']+'/Button').blockboard_click_lock == true:
+			blockboard_click_lock = true
+			break
+		if get_node(class_data[class_is]['name']+'/Button').blockboard_click_lock == false:
+			blockboard_click_lock = false
+		for data_id in class_data[class_is]['button_data']:
+			var blockboard_id = class_data[class_is]['name'] + \\
+								'/Group/Group/HBoxContainer/' + \\
+								class_data[class_is]['button_data'][data_id]['name']
+			if get_node(blockboard_id+'/Button').blockboard_click_lock == false:
+				blockboard_click_lock = false
+			
+			if get_node(blockboard_id+'/Button').blockboard_click_lock == true:
+				blockboard_click_lock = true
+				break
+			break
+
+			
+				
+			#print(blockboard_click_lock)
+
+			
+	#for group in group_list:
+	#	if get_node(group+'/Button').blockboard_click_lock == false:
+	#		blockboard_click_lock = false
+	#	if get_node(group+'/Button').blockboard_click_lock == true:
+	#		blockboard_click_lock = true
+	#		break
 "
 
 [node name="Blockboard" type="Node2D"]

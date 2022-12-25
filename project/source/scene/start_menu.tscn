@@ -84,9 +84,9 @@ anims/init = SubResource( 2 )
 
 [node name="Ver" type="Label" parent="FreezeGUI"]
 modulate = Color( 1, 1, 1, 0.392157 )
-margin_left = 960.0
-margin_top = 888.0
-margin_right = 1208.0
-margin_bottom = 936.0
+margin_left = 846.0
+margin_top = 890.0
+margin_right = 1102.0
+margin_bottom = 938.0
 custom_fonts/font = ExtResource( 1 )
-text = "Ver 202211a1"
+text = "Ver 202301a1"

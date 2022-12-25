@@ -109,6 +109,8 @@ extends Button
 
 export var hovered_zoom_level = 1.25
 
+var blockboard_click_lock = false
+
 # exp var
 var group_visible = false
 
@@ -116,9 +118,11 @@ func _physics_process(delta):
 	if is_hovered():
 		rect_scale = Vector2(hovered_zoom_level,hovered_zoom_level)
 		rect_position = Vector2(-64*hovered_zoom_level,-64*(hovered_zoom_level-1))
+		blockboard_click_lock = true
 	else:
 		rect_scale = Vector2(1,1)
 		rect_position = Vector2(-64,0)
+		blockboard_click_lock = false
 
 func _pressed():
 	if group_visible == true:

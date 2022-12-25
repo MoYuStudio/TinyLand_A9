@@ -36,6 +36,8 @@ var button_click = false
 
 var hovered_zoom_level = 1.25
 
+var blockboard_click_lock = false
+
 func _process(delta):
 	if is_hovered() == false:
 		info_popup = false
@@ -49,8 +51,10 @@ func _process(delta):
 func _physics_process(delta):
 	if is_hovered():
 		rect_position.y = -6*(hovered_zoom_level-1)
+		blockboard_click_lock = true
 	else:
 		rect_position.y = 0
+		blockboard_click_lock = false
 "
 
 [node name="BlockboardButton" type="Control"]
